@@ -8,6 +8,7 @@ import SortableHeader from './components/SortableHeader/SortableHeader';
 import SortableBody from './components/SortableBody/SortableBody';
 import {TABLE_COLUMNS} from './utils/utils';
 import Preloader from './components/common/Preloader/Preloader';
+import Form from './components/form/Form';
 
 
 export default class SortableTable extends React.Component {
@@ -16,8 +17,28 @@ export default class SortableTable extends React.Component {
     this.state = {
       clients: [],
       columns: TABLE_COLUMNS,
-      curretClients: 0
+      curretClients: 0,
+      formIsOpen: false
     };
+  }
+
+
+  clickOnForm = () => {
+    this.setState({
+      formIsOpen: true,
+    });
+  }
+
+  clickOnButtonForm = (values) => {
+    this.setState({
+      formIsOpen: false,
+    });
+    this.props.setNewClient(
+      {id: values.id, 
+       firstName: values.firstName, 
+       lastName: values.lastName, 
+       email: values.email, 
+       phone: values.phone})
   }
 
   componentDidMount() {
@@ -36,6 +57,7 @@ export default class SortableTable extends React.Component {
         this.setState({ clients });
        
     });
+   
   }
 
   onPageChanged = (pageNumber) => {
@@ -58,7 +80,7 @@ export default class SortableTable extends React.Component {
   }
 
   render() {
-    const pageCount = Math.ceil(this.props.totalClientsCount / this.props.pageSize);
+    const pageCount = Math.ceil(this.props.totalClients / this.props.pageSize);
     const pages = [];
     for (let i=1; i <= pageCount; i++) {
        pages.push(i);
@@ -80,6 +102,13 @@ export default class SortableTable extends React.Component {
         </div>
         <div>
         {this.props.isFetching ? <Preloader /> : <>
+        <div>
+          {this.state.formIsOpen ? 
+          <Form clickOnButtonForm={this.clickOnButtonForm}/> : 
+          <button className={classes.button} onClick={this.clickOnForm}>Добавить клиента</button>}
+         
+        </div>
+      
       <table className={classes.block}>
         
         <SortableHeader columns={this.state.columns} onClick={this.sortTableFunc}/>

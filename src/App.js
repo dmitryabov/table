@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SortableTable from './SortableTable';
 import { connect } from 'react-redux';
-import { setClientsAC, setCurrentPageAC, setCurrentClientAC, toogleIsFetchingtAC } from './redux/reduser';
+import { setClientsAC, setCurrentPageAC, setCurrentClientAC, toogleIsFetchingtAC, setNewClientAC } from './redux/reduser';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import { Route } from 'react-router-dom';
@@ -17,9 +17,9 @@ function App(props) {
       <div className='content'>
         <Route exact path='/' render={() =>  <StartPage />}/>
         <Route path='/small' render={() =>  
-          <SortableTable route={``} data={props.userReduser} {...props}/>}/>
+          <SortableTable route={``} data={props.userReduser} totalClients={32} {...props}/>}/>
         <Route path='/big' render={() => 
-          <SortableTable route={`&delay=3&`} data={props.userReduser} {...props}/>}/>
+          <SortableTable route={`&delay=3&`} data={props.userReduser} totalClients={1000} {...props}/>}/>
       </div>
     </div>
   );
@@ -50,6 +50,9 @@ const mapDiapatchToProps = (dispatch) => {
     },
     toogleIsFetchingt: (currentClient) => {
       dispatch(toogleIsFetchingtAC(currentClient));
+    },
+    setNewClient: (newClient) => {
+      dispatch(setNewClientAC(newClient));
     }
   }
 }
