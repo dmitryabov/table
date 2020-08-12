@@ -1,14 +1,14 @@
 import React from 'react';
-import classes from './SortableTable.module.css';
+import classes from '../SortableTable/SortableTable.module.css';
 import style from './Table.module.css';
 import sortMultidimensionalArrayFunc from 'sort-multidimensional-array-func';
 import * as axios from 'axios';
-import UserDetailsCard from './components/UserDetailsCard/UserDetailsCard';
-import SortableHeader from './components/SortableHeader/SortableHeader';
-import SortableBody from './components/SortableBody/SortableBody';
-import {TABLE_COLUMNS} from './utils/utils';
-import Preloader from './components/common/Preloader/Preloader';
-import Form from './components/form/Form';
+import UserDetailsCard from '../UserDetailsCard/UserDetailsCard';
+import SortableHeader from '../SortableHeader/SortableHeader';
+import SortableBody from '../SortableBody/SortableBody';
+import {TABLE_COLUMNS} from '../../utils/utils';
+import Preloader from '../common/Preloader/Preloader';
+import Form from '../form/Form';
 
 
 export default class SortableTable extends React.Component {

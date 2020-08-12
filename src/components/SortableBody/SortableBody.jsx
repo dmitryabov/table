@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../SortableTable.module.css';
+import classes from '../SortableTable/SortableTable.module.css';
 
 const SortableBody = (props) => { 
     const { data } = props;

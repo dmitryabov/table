@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SortableTable from './SortableTable';
+import SortableTable from './components/SortableTable/SortableTable';
 import { connect } from 'react-redux';
 import { setClientsAC, setCurrentPageAC, setCurrentClientAC, toogleIsFetchingtAC, setNewClientAC } from './redux/reduser';
 import Header from './components/Header/Header';

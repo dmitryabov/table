@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../SortableTable.module.css';
+import classes from '../SortableTable/SortableTable.module.css';
 import PointerUp from '../../components/common/Pointer/PointerUp';
 import PointerDown from '../common/Pointer/PointerDown';
 
